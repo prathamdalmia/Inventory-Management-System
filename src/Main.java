@@ -2,8 +2,8 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import Updation.*;
-
+//import Updation.*;
+import Order.PlaceOrder;
 
 
 
@@ -22,8 +22,14 @@ public class Main {
 //			i.insert(conn, 1, username, pass, "100001", "anywhere");
 //			conn.close();
 			
-			UpdateProductQuantity u = new UpdateProductQuantity();
-			u.update(conn, 101, 100000000);
+//			UpdateProductQuantity u = new UpdateProductQuantity();
+//			u.update(conn, 101, 10000);
+			
+			PlaceOrder po = new PlaceOrder() ;
+			po.placeOrder(conn,"Pratham",101,100);
+			
+			
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
