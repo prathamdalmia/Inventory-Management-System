@@ -5,26 +5,28 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Types;
 
-public class UpdateProductPrice {
-	public String update(Connection conn,int product_id,double product_price) {
+public class UpdateSupplierContactNumber {
+	public String update(Connection conn,int supplier_id,String contact_number) {
 		try {
-			CallableStatement stmt = conn.prepareCall("{CALL Update_Product_Price(?, ?, ?)}");
-			stmt.setInt(1,product_id);
-			stmt.setDouble(2, product_price);
+			CallableStatement stmt = conn.prepareCall("{CALL Update_Supplier_Phone(?, ?, ?)}");
+			stmt.setInt(1,supplier_id);
+			stmt.setString(2, contact_number);
 			stmt.registerOutParameter(3, Types.INTEGER);
 			
 			stmt.execute();
+			
 			int status = stmt.getInt(3);
 			
-			if(status == 0) {
-				return "Error: Product with ID "+product_id+" Not Found!";
+			if(status==0) {
+				return "Error: Supplier with ID "+supplier_id+" not found!";
 			}
 			else if(status == -1) {
 				return "Unexpected Error Occured!";
 			}
 			else {
-				return "Updated price of Product with ID "+product_id;
+				return "Updated Phone Number of Supplier with ID "+supplier_id;
 			}
+			
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
