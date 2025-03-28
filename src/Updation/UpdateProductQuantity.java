@@ -7,7 +7,7 @@ import java.sql.CallableStatement;
 
 
 public class UpdateProductQuantity {
-	public void update(Connection conn,int product_id,int product_quantity) {
+	public String update(Connection conn,int product_id,int product_quantity) {
 		try {
 			CallableStatement stmt = conn.prepareCall("{CALL Update_Product_Quantity(?, ?)}");
 			stmt.setInt(1,product_id);
@@ -15,14 +15,14 @@ public class UpdateProductQuantity {
 			
 			stmt.execute();
 			
-			System.out.println("Updated Product with ID "+product_id);
+			
 			
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		return "Updated Product with ID "+product_id;
 	}
 
 }

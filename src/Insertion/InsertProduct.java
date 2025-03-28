@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class InsertProduct  {
 	
-	public void insert(Connection conn,int id,String name,String category,long quantity,double price) throws SQLException {
+	public String insert(Connection conn,int id,String name,String category,long quantity,double price) throws SQLException {
 		
 		//creating a statement to call the procedure to add new product in products table 
 		CallableStatement stmt = conn.prepareCall("{ CALL Add_Product(?, ?, ?, ?, ?) }");
@@ -23,12 +23,13 @@ public class InsertProduct  {
 		
 		//execute the statement
 		stmt.execute();
-		System.out.println("Product added successfully: " + name + " | Category: " + category + " | Qty: " + quantity + " | Price: $" + price);
 		
 		//closing the statement
 		stmt.close();
 			
-			
+		return ("Product added successfully: " + name + " | Category: " + category + " | Qty: " + quantity + " | Price: $" + price);
+		
+		
 			
 			
 	}

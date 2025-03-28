@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class InsertSupplier {
 	
-	public void insert(Connection conn,int id,String name,String contact,String email,String address) throws SQLException{
+	public String insert(Connection conn,int id,String name,String contact,String email,String address) throws SQLException{
 		
 			//creating a statement to call the procedure to add new product in products table 
 		CallableStatement stmt = conn.prepareCall("{ CALL Add_Supplier(?, ?, ?, ?, ?) }");
@@ -20,10 +20,11 @@ public class InsertSupplier {
 		
 		//execute the statement
 		stmt.execute();
-		System.out.println("Supplier added successfully: " + name + " | Contact: " + contact + " | Email: " + email + " | address: " + address);
+		//System.out.println("Supplier added successfully: " + name + " | Contact: " + contact + " | Email: " + email + " | address: " + address);
 		
 		//closing the statement
 		stmt.close();
+		return "Supplier added successfully: " + name + " | Contact: " + contact + " | Email: " + email + " | address: " + address;
 			
 			
 			

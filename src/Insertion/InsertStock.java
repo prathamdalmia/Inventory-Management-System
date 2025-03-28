@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class InsertStock {
 	
-	public void insert(Connection conn,int id,int prod_id, int supplier_id,int quantity_added) throws SQLException{
+	public String  insert(Connection conn,int id,int prod_id, int supplier_id,int quantity_added) throws SQLException{
 		
 		//creating a statement to call the procedure to add new product in products table 
 		CallableStatement stmt = conn.prepareCall("{ CALL Add_Stock(?, ?, ?, ?) }");
@@ -20,11 +20,11 @@ public class InsertStock {
 		
 		//execute the statement
 		stmt.execute();
-		System.out.println("Stock added successfully with ID " + id);
+		//System.out.println("Stock added successfully with ID " + id);
 		
 		//closing the statement
 		stmt.close();
-		
+		return "Stock added successfully with ID " + id;
 			
 			
 			

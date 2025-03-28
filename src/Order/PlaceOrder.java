@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PlaceOrder {
-	public void placeOrder(Connection conn,String customer_name, int product_id, int product_quantity) {
+	public String placeOrder(Connection conn,String customer_name, int product_id, int product_quantity) {
 		
 		
 		try {
@@ -21,8 +21,8 @@ public class PlaceOrder {
 				quantity_available = rs.getInt("QUANTITY");
 			}
 			if((quantity_available - product_quantity) < 0) {
-				System.out.println("Not Enough product available");
-				return;
+				//System.out.println("Not Enough product available");
+				return "Not Enough product available";
 			}
 			
 			int order_id = 0;
@@ -42,11 +42,13 @@ public class PlaceOrder {
 			stmt3.setInt(4, product_quantity);
 			
 			stmt3.execute();
+			return "Placed Order with ID "+ order_id;
 			
-			System.out.println("Placed Order with ID "+ order_id);
+			//System.out.println("Placed Order with ID "+ order_id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return "Error has Occured";
 		}
 		
 		

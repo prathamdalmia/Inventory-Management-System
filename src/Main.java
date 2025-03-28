@@ -29,8 +29,7 @@ public class Main {
 			po.placeOrder(conn,"Pratham",101,100);
 			
 			
-			
-			
+			conn.close();			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
