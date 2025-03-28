@@ -12,15 +12,16 @@ public class DeleteSupplier {
 			
 			
 			stmt.execute();
-			
+			stmt.close();
 			//System.out.println("Deleted Product with ID "+supplier_id);
+			return "Delete;d Product with ID "+supplier_id;
+
 			
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return "Unexpected Error Occured";
 		}
-		return "Delete;d Product with ID "+supplier_id;
 		
 	}
 

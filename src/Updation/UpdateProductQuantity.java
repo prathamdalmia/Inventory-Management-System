@@ -18,7 +18,7 @@ public class UpdateProductQuantity {
 			
 			stmt.execute();
 			int status = stmt.getInt(3);
-			
+			stmt.close();
 			if(status == 0) {
 				return "Error: Product with ID "+product_id+" Not Found!";
 			}

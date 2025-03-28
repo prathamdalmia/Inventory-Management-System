@@ -16,7 +16,7 @@ public class UpdateSupplierContactNumber {
 			stmt.execute();
 			
 			int status = stmt.getInt(3);
-			
+			stmt.close();
 			if(status==0) {
 				return "Error: Supplier with ID "+supplier_id+" not found!";
 			}

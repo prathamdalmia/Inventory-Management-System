@@ -42,6 +42,8 @@ public class PlaceOrder {
 			stmt3.setInt(4, product_quantity);
 			
 			stmt3.execute();
+			stmt1.close();
+			stmt3.close();
 			return "Placed Order with ID "+ order_id;
 			
 			//System.out.println("Placed Order with ID "+ order_id);

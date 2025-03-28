@@ -12,15 +12,15 @@ public class DeleteProduct {
 			
 			
 			stmt.execute();
-			
-			System.out.println("Deleted Product with ID "+product_id);
-			
+			stmt.close();
+			//System.out.println("Deleted Product with ID "+product_id);
+			return "Deleted Product with ID "+product_id;
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			return "Unexpected Error Occured";
 		}
-		return "Deleted Product with ID "+product_id;
 		
 	}
 

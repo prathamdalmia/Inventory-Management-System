@@ -16,9 +16,8 @@ public class CheckStock {
 			stmt.execute();
 			
 			int quantity = stmt.getInt(2);
-			
+			stmt.close();
 			return quantity;
-		
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
