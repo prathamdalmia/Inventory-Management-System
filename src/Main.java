@@ -1,4 +1,6 @@
-//import Insertion.*;
+
+import Insertion.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -25,9 +27,9 @@ public class Main {
 //			UpdateProductQuantity u = new UpdateProductQuantity();
 //			u.update(conn, 101, 10000);
 			
-			PlaceOrder po = new PlaceOrder() ;
-			po.placeOrder(conn,"Pratham",101,100);
 			
+			InsertEmployee ie = new InsertEmployee();
+			ie.insert(conn, username, "Manager", pass);
 			
 			conn.close();			
 		} catch (SQLException e) {
